@@ -41,7 +41,12 @@
                         <items>
                             <ColumnListItem type="Navigation">
                                 <cells>
-                                    <ObjectIdentifier title="{employeeModel>FirstName} {employeeModel>LastName}" text="{employeeModel>Email}@test.com"/>
+                                    <ObjectIdentifier  
+                                        text="{path: 'employeeModel>Email',
+						                        formatter: '.formatter.toLowerCase'}"
+                                        
+                                        title="{ parts: [{ path: 'employeeModel>FirstName' }, { path: 'employeeModel>LastName' }],
+						                    formatter: '.formatter.formatTitle'}"/>
                                     <ObjectNumber
                                         number="{
                                             parts:[

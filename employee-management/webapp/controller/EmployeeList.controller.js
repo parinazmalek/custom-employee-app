@@ -4,10 +4,13 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
 	'sap/ui/model/Sorter',
 	'sap/m/MessageBox',
-], function (Controller, Filter, FilterOperator, Sorter, MessageBox) {
+    "../model/formatter"
+], function (Controller, Filter, FilterOperator, Sorter, MessageBox,formatter) {
 	"use strict";
 
         return Controller.extend("ca.deloitte.hr.employeemanagement.controller.EmployeeList", {
+            formatter: formatter,
+
             onInit: function () {
                 this.oView = this.getView();
                 this._bDescendingSort = false;
