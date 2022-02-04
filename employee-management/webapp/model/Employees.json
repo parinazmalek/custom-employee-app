@@ -1,0 +1,50 @@
+{
+    "Employees": [
+        {
+            "EmployeeNumber ": "122435",
+            "FirstName": "Donald",
+            "LastName": "DOCONNEL",
+            "Email": "DOCONNEL",
+            "Phone": "650.507.9833",
+            "AskAbout": "I am a solution dveloper",
+            "SkillName": "Java, JS, HTML, CSS",
+            "LastUpdate ": "2021-10-02",
+            "Salary": "56000",
+            "HireDate": "2010-05-03",
+            "CanadianStatus": "T",
+            "LastChange": "2021-10-02",
+            "CurrencyCode": "US"
+
+        },
+        {
+            "EmployeeNumber": "398468",
+            "FirstName": "Douglas",
+            "LastName": "Grant",
+            "Email": "DGRANT",
+            "Phone": "650.507.9844",
+            "AskAbout": "I am a solution designer",
+            "SkillName": "ABAP, Ui5",
+            "LastUpdate": "2022-01-01",
+            "Salary": "86000",
+            "HireDate": "2015-03-07",
+            "CanadianStatus": "F",
+            "LastChange": "2022-01-01",
+            "CurrencyCode": "EUR"
+        },
+        {
+            "EmployeeNumber": "834769",
+            "FirstName": "Jennifer",
+            "LastName": "Whalen",
+            "Email": "JWHALEN",
+            "Phone": "515.123.4444",
+            "AskAbout": "I am a solution associate",
+            "SkillName": "Fiori",
+            "LastUpdate": "2021-10-16",
+            "Salary": "96000",
+            "HireDate": "2017-06-03",
+            "CanadianStatus": "F",
+            "LastChange": "2021-10-16",
+            "CurrencyCode": "CAD"
+        }
+    ]
+}

@@ -1,18 +1,62 @@
 <mvc:View
     controllerName="ca.deloitte.hr.employeemanagement.controller.EmployeeList"
     xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
     xmlns="sap.m"
->
-    <Shell id="shell">
-        <App id="app">
-            <pages>
-                <Page id="page" title="{i18n>title}">
-                    <content>
-                    
-                    </content>
-                </Page>
-            </pages>
-        </App>
-    </Shell>
+    xmlns:f="sap.f">
+    	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+        	<f:title>
+    			<f:DynamicPageTitle>
+	    			<f:heading>
+		    			<Title text="Employee List"/>
+			    	</f:heading>
+			    </f:DynamicPageTitle>
+		    </f:title>
+            <f:content>
+            	<VBox fitContainer="true">
+                    <OverflowToolbar class="sapFDynamicPageAlignContent">
+					    <ToolbarSpacer/>
+					    <SearchField search=".onSearch" width="17.5rem"/>
+					    <OverflowToolbarButton icon="sap-icon://add" text="Add" type="Transparent" press=".onAdd"/>
+					    <OverflowToolbarButton icon="sap-icon://sort" text="Sort" type="Transparent" press=".onSort"/>
+				    </OverflowToolbar>
+                    <Table
+                        id="employeeTable"
+                        inset="false"
+                        items="{
+                            path: 'employeeModel>/Employees',
+                            sorter: {
+                                path: 'FirstName'
+                            }
+                        }"
+                        class="sapFDynamicPageAlignContent"
+                        width="auto">
+                        <columns>
+                            <Column width="12em">
+                                <Text text="Employee Name"/>
+                            </Column>
+                            <Column	hAlign="End">
+                                <Text text="Salary"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Navigation">
+                                <cells>
+                                    <ObjectIdentifier title="{employeeModel>FirstName} {employeeModel>LastName}" text="{employeeModel>Email}@test.com"/>
+                                    <ObjectNumber
+                                        number="{
+                                            parts:[
+                                                {path:'employeeModel>Salary'},
+                                                {path:'employeeModel>CurrencyCode'}
+                                            ],
+                                            type: 'sap.ui.model.type.Currency',
+                                            formatOptions: {showMeasure: false}
+                                        }"
+                                        unit="{employeeModel>CurrencyCode}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </f:content>	    
+        </f:DynamicPage>
 </mvc:View>

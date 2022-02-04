@@ -11,8 +11,8 @@
     "description": "{{appDescription}}",
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/",
-        "type": "OData",
+        "type": "sap.ui.model.json.JSONModel",
+		"uri": "/model/Employees.json",
         "settings": {
           "annotations": [],
           "localUri": "localService/metadata.xml",
@@ -42,7 +42,9 @@
     "dependencies": {
       "minUI5Version": "1.97.2",
       "libs": {
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -56,6 +58,10 @@
           "bundleName": "ca.deloitte.hr.employeemanagement.i18n.i18n"
         }
       },
+	  "employeeModel": {
+		"type": "sap.ui.model.json.JSONModel",
+		"uri": "model/Employees.json"
+	  },
       "": {
         "dataSource": "mainService",
         "preload": true,
