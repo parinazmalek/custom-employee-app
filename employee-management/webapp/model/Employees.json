@@ -1,18 +1,17 @@
 {
     "Employees": [
         {
-            "EmployeeNumber ": "122435",
+            "EmployeeNumber": "343487",
             "FirstName": "Donald",
             "LastName": "DOCONNEL",
             "Email": "DOCONNEL",
             "Phone": "650.507.9833",
-            "AskAbout": "I am a solution dveloper",
+            "Title": "Solution developer",
             "SkillName": "Java, JS, HTML, CSS",
-            "LastUpdate ": "2021-10-02",
+            "LastUpdate": "2022-01-01T00:00:00",
             "Salary": "56000",
-            "HireDate": "2010-05-03",
-            "CanadianStatus": "T",
-            "LastChange": "2021-10-02",
+            "HireDate":"2015-06-16T00:00:00",
+            "CanadianStatus": true,
             "CurrencyCode": "US"
 
         },
@@ -22,13 +21,12 @@
             "LastName": "Grant",
             "Email": "DGRANT",
             "Phone": "650.507.9844",
-            "AskAbout": "I am a solution designer",
+            "Title": "Solution designer",
             "SkillName": "ABAP, Ui5",
-            "LastUpdate": "2022-01-01",
+            "LastUpdate": "2022-02-01T00:00:00",
             "Salary": "86000",
-            "HireDate": "2015-03-07",
-            "CanadianStatus": "F",
-            "LastChange": "2022-01-01",
+            "HireDate": "2017-03-16T00:00:00",
+            "CanadianStatus": false,
             "CurrencyCode": "EUR"
         },
         {
@@ -37,13 +35,12 @@
             "LastName": "Whalen",
             "Email": "JWHALEN",
             "Phone": "515.123.4444",
-            "AskAbout": "I am a solution associate",
+            "Title": "Solution associate",
             "SkillName": "Fiori",
-            "LastUpdate": "2021-10-16",
+            "LastUpdate": "2021-09-16T00:00:00",
             "Salary": "96000",
-            "HireDate": "2017-06-03",
-            "CanadianStatus": "F",
-            "LastChange": "2021-10-16",
+            "HireDate": "2021-09-16T00:00:00",
+            "CanadianStatus": true,
             "CurrencyCode": "CAD"
         }
     ]

@@ -1,14 +1,14 @@
 sap.ui.define([], function () {
-	"use strict";
+    "use strict";
 
-	return {
+    return {
 
-		toLowerCase: function (email) {
-            return email.toLowerCase()+'@test.com';
-		},
+        toLowerCase: function (email) {
+            return email.toLowerCase() + '@test.com';
+        },
 
         formatTitle: function (sFirstName, sLastName) {
             return sFirstName.toUpperCase() + " " + sLastName.toUpperCase();
-        },
-	};
+        }
+    };
 });
