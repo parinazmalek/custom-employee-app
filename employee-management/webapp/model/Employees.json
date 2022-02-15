@@ -1,0 +1,47 @@
+{
+    "Employees": [
+        {
+            "EmployeeNumber": "343487",
+            "FirstName": "Donald",
+            "LastName": "DOCONNEL",
+            "Email": "DOCONNEL",
+            "Phone": "650.507.9833",
+            "Title": "Solution developer",
+            "SkillName": "Java, JS, HTML, CSS",
+            "LastUpdate": "2022-01-01T00:00:00",
+            "Salary": "56000",
+            "HireDate":"2015-06-16T00:00:00",
+            "CanadianStatus": true,
+            "CurrencyCode": "US"
+
+        },
+        {
+            "EmployeeNumber": "398468",
+            "FirstName": "Douglas",
+            "LastName": "Grant",
+            "Email": "DGRANT",
+            "Phone": "650.507.9844",
+            "Title": "Solution designer",
+            "SkillName": "ABAP, Ui5",
+            "LastUpdate": "2022-02-01T00:00:00",
+            "Salary": "86000",
+            "HireDate": "2017-03-16T00:00:00",
+            "CanadianStatus": false,
+            "CurrencyCode": "EUR"
+        },
+        {
+            "EmployeeNumber": "834769",
+            "FirstName": "Jennifer",
+            "LastName": "Whalen",
+            "Email": "JWHALEN",
+            "Phone": "515.123.4444",
+            "Title": "Solution associate",
+            "SkillName": "Fiori",
+            "LastUpdate": "2021-09-16T00:00:00",
+            "Salary": "96000",
+            "HireDate": "2021-09-16T00:00:00",
+            "CanadianStatus": true,
+            "CurrencyCode": "CAD"
+        }
+    ]
+}

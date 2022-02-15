@@ -1,0 +1,120 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "ca.deloitte.hr.employeemanagement",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "type": "sap.ui.model.json.JSONModel",
+		"uri": "/model/Employees.json",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.97.2",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ca.deloitte.hr.employeemanagement.i18n.i18n"
+        }
+      },
+	  "employeeModel": {
+		"type": "sap.ui.model.json.JSONModel",
+		"uri": "model/Employees.json"
+	  },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupId": "$direct"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "ca.deloitte.hr.employeemanagement.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteEmployeeList",
+          "pattern": "RouteEmployeeList",
+          "target": [
+            "TargetEmployeeList"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetEmployeeList": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "EmployeeList",
+          "viewName": "EmployeeList"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "ca.deloitte.hr.employeemanagement.view.EmployeeList",
+      "type": "XML",
+      "async": true,
+      "id": "EmployeeList"
+    }
+  }
+}
