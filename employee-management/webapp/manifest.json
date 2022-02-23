@@ -11,7 +11,7 @@
     "description": "{{appDescription}}",
     "dataSources": {
       "mainService": {
-        "type": "sap.ui.model.json.JSONModel",
+        "type": "JSON",
 		"uri": "/model/Employees.json",
         "settings": {
           "annotations": [],
@@ -38,7 +38,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.97.2",
       "libs": {

@@ -1,24 +1,40 @@
 <mvc:View
     controllerName="ca.deloitte.hr.employeemanagement.controller.EmployeeList"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m"
-    xmlns:f="sap.f">
-    	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar">
+    	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="true">
         	<f:title>
     			<f:DynamicPageTitle>
-	    			<f:heading>
-		    			<Title text="{i18n>tableTitle}" />
-			    	</f:heading>
+	    			<f:snappedContent>
+                        <Label  text="Filtered by: {employeeModel>/filterSnappedText}"></Label>
+                    </f:snappedContent>
 			    </f:DynamicPageTitle>
 		    </f:title>
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+					<f:content>
+						<fb:FilterBar id="filterbar" showFilterConfiguration="false"  useToolbar="false" showGoOnFB="false" showClearOnFB="true" clear="onClear"> 
+                            <fb:filterGroupItems>
+								<fb:FilterGroupItem groupName="__$INTERNAL$" label="Name" name="filter_name" visibleInFilterBar="true">
+									<fb:control>
+										<Input id="filter_name" liveChange="onSearch"/>
+									</fb:control>				
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" label="Employee Number" name="filter_employeeNumber" visibleInFilterBar="true">
+									<fb:control>
+										<Input id="filter_employeeNumber" type="Number" liveChange="onSearch"/>
+									</fb:control>				
+								</fb:FilterGroupItem>
+                            </fb:filterGroupItems>				
+                        </fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
             <f:content>
-            	<VBox fitContainer="true">
-                    <OverflowToolbar class="sapFDynamicPageAlignContent">
-					    <ToolbarSpacer/>
-					    <SearchField search=".onSearch" width="17.5rem"/>
-					    <OverflowToolbarButton icon="sap-icon://add" text="Add" type="Transparent" press=".onAdd"/>
-					    <OverflowToolbarButton icon="sap-icon://sort" text="Sort" type="Transparent" press=".onSort"/>
-				    </OverflowToolbar>
+
                     <Table
                         id="employeeTable"
                         inset="false"
@@ -31,63 +47,57 @@
                         class="sapFDynamicPageAlignContent"
                         width="auto">
                         <columns>
-                            <Column width="12em">
-                                <Text text="{i18n>name}"/>
+                            <Column width="12em" >
+                                <Text text="{i18n>name}" />
                             </Column>
-                            <Column width="12em"  minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                            <Column vAlign="Top" width="12em"  minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
                                 <Text text="Email"/>
                             </Column>
-                            <Column visible="{device>/isPhone}" minScreenWidth="Small" demandPopin="true" popinDisplay="Inline">
+                            <Column vAlign="Top" visible="{device>/isPhone}" minScreenWidth="Small" demandPopin="true" popinDisplay="Inline">
 				                <Text text="{i18n>phone}" />
 			                </Column>
-                            <Column visible="{= ${device>/isPhone} !== true }" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                            <Column vAlign="Top" visible="{= ${device>/isPhone} !== true }" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
 				                <Text text="{i18n>phone}" />
 			                </Column>
-                            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
+                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
 				                <Text text="{i18n>title}" />
                             </Column>
-                            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
+                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
 				                <Text text="{i18n>skill}" />
                             </Column>
-                            <Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
 				                <Text text="{i18n>hireDate}" />
                             </Column>
-                            <Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
 				                <Text text="{i18n>lastDate}" />
                             </Column>
-                            <Column	hAlign="End">
+                            <Column vAlign="Top" hAlign="End">
                                 <Text text="{i18n>salary}"/>
                             </Column>
-                            <Column hAlign="End" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" >
+                            <Column vAlign="Top" hAlign="Center" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" >
 				                <Text text="{i18n>canadian}" />
                             </Column>
                         </columns>
                         <items>
                             <ColumnListItem type="Navigation" vAlign="Middle" >
                                 <cells >
-                                    <ObjectIdentifier 
-                                    class="sapUiTinyMarginTopBottom" 
+                                    <ObjectIdentifier
                                         text="{employeeModel>EmployeeNumber}"
                                         title="{ parts: [{ path: 'employeeModel>FirstName' }, { path: 'employeeModel>LastName' }],
 						                    formatter: '.formatter.formatTitle'}"/>
                                     <Link  text="{path: 'employeeModel>Email',
-						                        formatter: '.formatter.toLowerCase'}" 
-                                                                                    
-                                            class="sapUiSmallMarginBottom"
+						                        formatter: '.formatter.toLowerCase'}"                                   
                                             href="mailto:sample@example.com"/>
                                     <Link
 						                text="{employeeModel>Phone}"
-                                        
                                         href="https://www.sap.com/index.html" />
                                     <Text
-                                        class="sapUiSmallMarginBottom"
 						                text="{employeeModel>Phone}" />
                                     <Text
 						                text="{employeeModel>Title}" />
                                     <Text
 						                text="{employeeModel>SkillName}" />
                                     <Text 
-                                        class="sapUiSmallMarginBottom"
                                         text="{
                                         path: 'employeeModel>HireDate',
                                         type: 'sap.ui.model.type.Date',
@@ -98,7 +108,6 @@
                                         }
                                     }" />
                                     <Text 
-                                        class="sapUiSmallMarginBottom"
                                         text="{
                                         path: 'employeeModel>LastUpdate',
                                         type: 'sap.ui.model.type.Date',
@@ -111,7 +120,6 @@
                                         }
                                     }" />
                                     <ObjectNumber
-                                        class="sapUiSmallMarginBottom"
                                         number="{
                                             parts:[
                                                 {path:'employeeModel>Salary'},
@@ -123,7 +131,6 @@
                                         unit="{employeeModel>CurrencyCode}"/>
                                                                             
                                    	<Switch
-                                        class="sapUiSmallMarginBottom"
                                         type="AcceptReject" state="{employeeModel>CanadianStatus}" 	enabled="false">
 				                        <layoutData>
 					                        <FlexItemData growFactor="1" />
@@ -133,7 +140,6 @@
                             </ColumnListItem>
                         </items>
                     </Table>
-                </VBox>
             </f:content>	    
         </f:DynamicPage>
 </mvc:View>
