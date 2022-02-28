@@ -1,145 +1,152 @@
 <mvc:View
     controllerName="ca.deloitte.hr.employeemanagement.controller.EmployeeList"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
-    xmlns="sap.m"
-    xmlns:f="sap.f"
-    xmlns:fb="sap.ui.comp.filterbar">
-    	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="true">
-        	<f:title>
-    			<f:DynamicPageTitle>
-	    			<f:snappedContent>
-                        <Label  text="Filtered by: {employeeModel>/filterSnappedText}"></Label>
-                    </f:snappedContent>
-			    </f:DynamicPageTitle>
-		    </f:title>
-            <f:header>
-                <f:DynamicPageHeader pinnable="true">
-					<f:content>
-						<fb:FilterBar id="filterbar" showFilterConfiguration="false"  useToolbar="false" showGoOnFB="false" showClearOnFB="true" clear="onClear"> 
-                            <fb:filterGroupItems>
-								<fb:FilterGroupItem groupName="__$INTERNAL$" label="Name" name="filter_name" visibleInFilterBar="true">
-									<fb:control>
-										<Input id="filter_name" liveChange="onSearch"/>
-									</fb:control>				
-								</fb:FilterGroupItem>
-                                <fb:FilterGroupItem groupName="__$INTERNAL$" label="Employee Number" name="filter_employeeNumber" visibleInFilterBar="true">
-									<fb:control>
-										<Input id="filter_employeeNumber" type="Number" liveChange="onSearch"/>
-									</fb:control>				
-								</fb:FilterGroupItem>
-                            </fb:filterGroupItems>				
-                        </fb:FilterBar>
-					</f:content>
-				</f:DynamicPageHeader>
-			</f:header>
-            <f:content>
-
-                    <Table
-                        id="employeeTable"
-                        inset="false"
-                        items="{
-                            path: 'employeeModel>/Employees',
-                            sorter: {
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:layout="sap.ui.layout"		
+    xmlns:fb="sap.ui.comp.filterbar"
+    height="100%">
+	<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>appTitle}"/>
+				</f:heading>
+				<f:snappedContent>
+                    <Label  text="{employeeModel>/filterSnappedText}"></Label>
+                </f:snappedContent>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<fb:FilterBar id="filterbar" showFilterConfiguration="false"  useToolbar="false" showGoOnFB="false" showClearOnFB="true" clear="onClear"> 
+                        <fb:filterGroupItems>
+							<fb:FilterGroupItem groupName="__$INTERNAL$" label="Name" name="filter_name" visibleInFilterBar="true">
+								<fb:control>
+									<Input id="filter_name" liveChange="onSearch"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" label="Employee Number" name="filter_employeeNumber" visibleInFilterBar="true">
+								<fb:control>
+									<Input id="filter_employeeNumber" type="Number" liveChange="onSearch"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+                        </fb:filterGroupItems>				
+                    </fb:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Table
+                id="employeeTable"
+                inset="false"
+                items="{
+                        path: 'employeeModel>/Employees',
+                        sorter: {
                                 path: 'FirstName'
                             }
                         }"
-                        class="sapFDynamicPageAlignContent"
-                        width="auto">
-                        <columns>
-                            <Column width="12em" >
-                                <Text text="{i18n>name}" />
-                            </Column>
-                            <Column vAlign="Top" width="12em"  minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
-                                <Text text="Email"/>
-                            </Column>
-                            <Column vAlign="Top" visible="{device>/isPhone}" minScreenWidth="Small" demandPopin="true" popinDisplay="Inline">
-				                <Text text="{i18n>phone}" />
-			                </Column>
-                            <Column vAlign="Top" visible="{= ${device>/isPhone} !== true }" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
-				                <Text text="{i18n>phone}" />
-			                </Column>
-                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
-				                <Text text="{i18n>title}" />
-                            </Column>
-                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
-				                <Text text="{i18n>skill}" />
-                            </Column>
-                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
-				                <Text text="{i18n>hireDate}" />
-                            </Column>
-                            <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
-				                <Text text="{i18n>lastDate}" />
-                            </Column>
-                            <Column vAlign="Top" hAlign="End">
-                                <Text text="{i18n>salary}"/>
-                            </Column>
-                            <Column vAlign="Top" hAlign="Center" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" >
-				                <Text text="{i18n>canadian}" />
-                            </Column>
-                        </columns>
+                class="sapFDynamicPageAlignContent"
+                width="auto"
+                >
+                <columns>
+                    <Column width="12em" >
+                        <Text text="{i18n>name}" />
+                    </Column>
+                    <Column vAlign="Top" width="12em"  minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                        <Text text="Email"/>
+                    </Column>
+                    <Column vAlign="Top" visible="{device>/isPhone}" minScreenWidth="Small" demandPopin="true" popinDisplay="Inline">
+		                <Text text="{i18n>phone}" />
+		            </Column>
+                    <Column vAlign="Top" visible="{= ${device>/isPhone} !== true }" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+				        <Text text="{i18n>phone}" />
+			        </Column>
+                    <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
+		                <Text text="{i18n>title}" />
+                    </Column>
+                    <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" hAlign="Begin" popinDisplay="Inline">
+				        <Text text="{i18n>skill}" />
+                    </Column>
+                    <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+				        <Text text="{i18n>hireDate}" />
+                     </Column>
+                    <Column vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+				        <Text text="{i18n>lastDate}" />
+                    </Column>
+                    <Column vAlign="Top" hAlign="End">
+                        <Text text="{i18n>salary}"/>
+                    </Column>
+                    <Column vAlign="Top" hAlign="Center" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" >
+				        <Text text="{i18n>canadian}" />
+                    </Column>
+                    </columns>
                         <items>
-                            <ColumnListItem type="Navigation" vAlign="Middle" >
-                                <cells >
-                                    <ObjectIdentifier
-                                        text="{employeeModel>EmployeeNumber}"
-                                        title="{ parts: [{ path: 'employeeModel>FirstName' }, { path: 'employeeModel>LastName' }],
-						                    formatter: '.formatter.formatTitle'}"/>
-                                    <Link  text="{path: 'employeeModel>Email',
-						                        formatter: '.formatter.toLowerCase'}"                                   
-                                            href="mailto:sample@example.com"/>
-                                    <Link
-						                text="{employeeModel>Phone}"
-                                        href="https://www.sap.com/index.html" />
-                                    <Text
-						                text="{employeeModel>Phone}" />
-                                    <Text
-						                text="{employeeModel>Title}" />
-                                    <Text
-						                text="{employeeModel>SkillName}" />
-                                    <Text 
-                                        text="{
-                                        path: 'employeeModel>HireDate',
-                                        type: 'sap.ui.model.type.Date',
-                                        formatOptions: {
-                                            source: {
-                                                pattern: 'yyyy-MM-ddTHH:mm:ss'
-                                            }
+                    <ColumnListItem type="Navigation" vAlign="Middle">
+                        <cells >
+                            <ObjectIdentifier
+                                text="{employeeModel>EmployeeNumber}"
+                                title="{ parts: [{ path: 'employeeModel>FirstName' }, { path: 'employeeModel>LastName' }],
+						                formatter: '.formatter.formatTitle'}"/>
+                            <Link  
+                                text="{path: 'employeeModel>Email',
+						              formatter: '.formatter.toLowerCase'}"                                   
+                                href="mailto:sample@example.com"/>
+                            <Link
+						        text="{employeeModel>Phone}"
+                                href="https://www.sap.com/index.html" />
+                            <Text
+						        text="{employeeModel>Phone}" />
+                            <Text
+						        text="{employeeModel>Title}" />
+                            <Text
+						        text="{employeeModel>SkillName}" />
+                            <Text 
+                                text="{
+                                    path: 'employeeModel>HireDate',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: {
+                                        source: {
+                                            pattern: 'yyyy-MM-ddTHH:mm:ss'
                                         }
-                                    }" />
-                                    <Text 
-                                        text="{
-                                        path: 'employeeModel>LastUpdate',
-                                        type: 'sap.ui.model.type.Date',
-                                        formatOptions: {
+                                    }
+                                }" />
+                            <Text 
+                                text="{
+                                    path: 'employeeModel>LastUpdate',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: {
                                         source: {
                                             pattern: 'yyyy-MM-ddTHH:mm:ss'
                                         },
                                         relative: true,
 					                    relativeScale: 'auto'
-                                        }
-                                    }" />
-                                    <ObjectNumber
-                                        number="{
-                                            parts:[
-                                                {path:'employeeModel>Salary'},
-                                                {path:'employeeModel>CurrencyCode'}
-                                            ],
-                                            type: 'sap.ui.model.type.Currency',
-                                            formatOptions: {showMeasure: false}
-                                        }"
-                                        unit="{employeeModel>CurrencyCode}"/>
-                                                                            
-                                   	<Switch
-                                        type="AcceptReject" state="{employeeModel>CanadianStatus}" 	enabled="false">
-				                        <layoutData>
-					                        <FlexItemData growFactor="1" />
-				                        </layoutData>
-			                        </Switch>
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table>
-            </f:content>	    
-        </f:DynamicPage>
-</mvc:View>
+                                    }
+                                }"/>
+                            <ObjectNumber
+                                number="{
+                                    parts:[
+                                        {path:'employeeModel>Salary'},
+                                        {path:'employeeModel>CurrencyCode'}
+                                    ],
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {showMeasure: false}
+                                }"
+                                unit="{employeeModel>CurrencyCode}"/>                                            
+                                   	
+                            <Switch
+                                type="AcceptReject" state="{employeeModel>CanadianStatus}" 	enabled="false">
+				                <layoutData>
+					                <FlexItemData growFactor="1" />
+				                </layoutData>
+			                </Switch>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+		</f:content>			
+	</f:DynamicPage>
+</mvc:View>	
