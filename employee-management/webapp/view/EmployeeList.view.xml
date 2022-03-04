@@ -14,7 +14,7 @@
 					<Title text="{i18n>appTitle}"/>
 				</f:heading>
 				<f:snappedContent>
-                    <Label  text="{employeeModel>/filterSnappedText}"></Label>
+                    <Label  text="{/filterSnappedText}"></Label>
                 </f:snappedContent>
 			</f:DynamicPageTitle>
 		</f:title>
@@ -44,7 +44,7 @@
                 id="employeeTable"
                 inset="false"
                 items="{
-                        path: 'employeeModel>/Employees',
+                        path: '/Employees',
                         sorter: {
                                 path: 'FirstName'
                             }
@@ -85,28 +85,28 @@
                     </Column>
                     </columns>
                         <items>
-                    <ColumnListItem type="Navigation" vAlign="Middle">
+                    <ColumnListItem type="Navigation" vAlign="Middle" press=".onListItemPress">
                         <cells >
                             <ObjectIdentifier
-                                text="{employeeModel>EmployeeNumber}"
-                                title="{ parts: [{ path: 'employeeModel>FirstName' }, { path: 'employeeModel>LastName' }],
+                                text="{EmployeeNumber}"
+                                title="{ parts: [{ path: 'FirstName' }, { path: 'LastName' }],
 						                formatter: '.formatter.formatTitle'}"/>
                             <Link  
-                                text="{path: 'employeeModel>Email',
+                                text="{path: 'Email',
 						              formatter: '.formatter.toLowerCase'}"                                   
                                 href="mailto:sample@example.com"/>
                             <Link
-						        text="{employeeModel>Phone}"
+						        text="{Phone}"
                                 href="https://www.sap.com/index.html" />
                             <Text
-						        text="{employeeModel>Phone}" />
+						        text="{Phone}" />
                             <Text
-						        text="{employeeModel>Title}" />
+						        text="{Title}" />
                             <Text
-						        text="{employeeModel>SkillName}" />
+						        text="{SkillName}" />
                             <Text 
                                 text="{
-                                    path: 'employeeModel>HireDate',
+                                    path: 'HireDate',
                                     type: 'sap.ui.model.type.Date',
                                     formatOptions: {
                                         source: {
@@ -116,7 +116,7 @@
                                 }" />
                             <Text 
                                 text="{
-                                    path: 'employeeModel>LastUpdate',
+                                    path: 'LastUpdate',
                                     type: 'sap.ui.model.type.Date',
                                     formatOptions: {
                                         source: {
@@ -129,16 +129,16 @@
                             <ObjectNumber
                                 number="{
                                     parts:[
-                                        {path:'employeeModel>Salary'},
-                                        {path:'employeeModel>CurrencyCode'}
+                                        {path:'Salary'},
+                                        {path:'CurrencyCode'}
                                     ],
                                         type: 'sap.ui.model.type.Currency',
                                         formatOptions: {showMeasure: false}
                                 }"
-                                unit="{employeeModel>CurrencyCode}"/>                                            
+                                unit="{CurrencyCode}"/>                                            
                                    	
                             <Switch
-                                type="AcceptReject" state="{employeeModel>CanadianStatus}" 	enabled="false">
+                                type="AcceptReject" state="{CanadianStatus}" 	enabled="false">
 				                <layoutData>
 					                <FlexItemData growFactor="1" />
 				                </layoutData>
