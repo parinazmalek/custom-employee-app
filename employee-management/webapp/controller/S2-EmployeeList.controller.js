@@ -9,7 +9,7 @@ sap.ui.define([
 ], function (Controller, Filter, Sorter, MessageBox, formatter,fioriLibrary) {
     "use strict";
 
-    return Controller.extend("ca.deloitte.hr.employeemanagement.controller.EmployeeList", {
+    return Controller.extend("ca.deloitte.hr.employeemanagement.controller.S2-EmployeeList", {
         formatter: formatter,
 
         onInit: function () {
@@ -74,7 +74,7 @@ sap.ui.define([
 			var employeePath = oEvent.getSource().getBindingContext().getPath(),
 				employee = employeePath.split("/").slice(-1).pop();
 
-			this.oRouter.navTo("detail", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded, employee: employee});
+			this.oRouter.navTo("Detail", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded, employee: employee});
 		}
     });
 });

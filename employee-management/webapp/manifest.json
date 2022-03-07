@@ -94,28 +94,28 @@
       "routes": [
         {
             "pattern": ":layout:",
-            "name": "EmployeeList",
+            "name": "List",
             "target": [
-            "EmployeeList",
-            "detail"
+            "List",
+            "Detail"
           ]
         },
         {
-            "pattern": "detail/{employee}/{layout}",
-            "name": "detail",
+            "pattern": "Detail/{employee}/{layout}",
+            "name": "Detail",
             "target": [
-                "EmployeeList",
-                "detail"
+                "List",
+                "Detail"
             ]
         }
       ],
       "targets": {
-        "EmployeeList": {
-            "name": "EmployeeList",
+        "List": {
+            "name": "S2-EmployeeList",
 			"controlAggregation": "beginColumnPages"
         },
-        "detail": {
-            "name": "Detail",
+        "Detail": {
+            "name": "S3-EmployeeDetail",
             "controlAggregation": "midColumnPages"
         }
       }

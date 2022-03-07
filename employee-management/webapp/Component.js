@@ -1,12 +1,9 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "sap/ui/Device",
     "ca/deloitte/hr/employeemanagement/model/models",
     'sap/f/library',
-    'sap/ui/model/json/JSONModel'
-
 ],
-    function (UIComponent, Device, models, fioriLibrary, JSONModel) {
+    function (UIComponent, models, fioriLibrary) {
         "use strict";
 
         return UIComponent.extend("ca.deloitte.hr.employeemanagement.Component", {

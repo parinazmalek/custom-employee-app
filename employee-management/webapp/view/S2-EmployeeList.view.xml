@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="ca.deloitte.hr.employeemanagement.controller.EmployeeList"
+    controllerName="ca.deloitte.hr.employeemanagement.controller.S2-EmployeeList"
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:f="sap.f"
