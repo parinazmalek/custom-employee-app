@@ -44,7 +44,8 @@
       "libs": {
         "sap.ui.core": {},
         "sap.m": {},
-        "sap.f": {}
+        "sap.f": {},
+		"sap.uxap": {}
       }
     },
     "contentDensities": {
@@ -58,10 +59,7 @@
           "bundleName": "ca.deloitte.hr.employeemanagement.i18n.i18n"
         }
       },
-	  "employeeModel": {
-		"type": "sap.ui.model.json.JSONModel",
-		"uri": "model/Employees.json"
-	  },
+	  
       "": {
         "dataSource": "mainService",
         "preload": true,
@@ -83,38 +81,50 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
+        "type": "View",
         "viewType": "XML",
         "async": true,
-        "viewPath": "ca.deloitte.hr.employeemanagement.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
+        "path": "ca.deloitte.hr.employeemanagement.view",
+        "controlId": "flexibleColumnLayout",
+        "transition": "slide",
+		"bypassed": {
+				}
       },
       "routes": [
         {
-          "name": "RouteEmployeeList",
-          "pattern": "RouteEmployeeList",
-          "target": [
-            "TargetEmployeeList"
+            "pattern": ":layout:",
+            "name": "List",
+            "target": [
+            "List",
+            "Detail"
           ]
+        },
+        {
+            "pattern": "Detail/{employee}/{layout}",
+            "name": "Detail",
+            "target": [
+                "List",
+                "Detail"
+            ]
         }
       ],
       "targets": {
-        "TargetEmployeeList": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "EmployeeList",
-          "viewName": "EmployeeList"
+        "List": {
+            "name": "S2-EmployeeList",
+			"controlAggregation": "beginColumnPages"
+        },
+        "Detail": {
+            "name": "S3-EmployeeDetail",
+            "controlAggregation": "midColumnPages"
         }
       }
     },
     "rootView": {
-      "viewName": "ca.deloitte.hr.employeemanagement.view.EmployeeList",
+      "viewName": "ca.deloitte.hr.employeemanagement.view.App",
       "type": "XML",
       "async": true,
-      "id": "EmployeeList"
+      "id": "App"
     }
   }
 }

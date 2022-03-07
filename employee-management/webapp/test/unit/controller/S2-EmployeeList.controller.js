@@ -1,11 +1,11 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"cadeloittehr/employee-management/controller/EmployeeList.controller"
+	"cadeloittehr/employee-management/controller/S2-EmployeeList.controller"
 ], function (Controller) {
 	"use strict";
 
-	QUnit.module("EmployeeList Controller");
+	QUnit.module("S2-EmployeeList Controller");
 
 	QUnit.test("I should test the EmployeeList controller", function (assert) {
 		var oAppController = new Controller();

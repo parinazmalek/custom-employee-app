@@ -3,17 +3,21 @@ sap.ui.define([
     "sap/ui/model/Filter",
     'sap/ui/model/Sorter',
     'sap/m/MessageBox',
-    "../model/formatter"
-], function (Controller, Filter, Sorter, MessageBox, formatter) {
+    "../model/formatter",
+    'sap/f/library'
+
+], function (Controller, Filter, Sorter, MessageBox, formatter,fioriLibrary) {
     "use strict";
 
-    return Controller.extend("ca.deloitte.hr.employeemanagement.controller.EmployeeList", {
+    return Controller.extend("ca.deloitte.hr.employeemanagement.controller.S2-EmployeeList", {
         formatter: formatter,
 
         onInit: function () {
             this.oView = this.getView();
             this._bDescendingSort = false;
             this.oEmoloyeeTable = this.oView.byId("employeeTable");
+            this.oRouter = this.getOwnerComponent().getRouter();
+
         },
 
         onSearch: function (oEvent) {
@@ -43,7 +47,7 @@ sap.ui.define([
             }
 
             this.oEmoloyeeTable.getBinding("items").filter(aFilter, "Application");
-            this.getView().getModel("employeeModel").setProperty("/filterSnappedText",aFilterSnappedText.join(", "))
+            this.getView().getModel().setProperty("/filterSnappedText",aFilterSnappedText.join(", "))
         },
 
         onAdd: function () {
@@ -64,6 +68,13 @@ sap.ui.define([
                 control.setValue("");
             });
             this.oEmoloyeeTable.getBinding("items").filter([], "Application");
-        }
+        },
+
+		onListItemPress: function (oEvent) {
+			var employeePath = oEvent.getSource().getBindingContext().getPath(),
+				employee = employeePath.split("/").slice(-1).pop();
+
+			this.oRouter.navTo("Detail", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded, employee: employee});
+		}
     });
 });
